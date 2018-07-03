@@ -6,20 +6,20 @@ using namespace std;
 ifstream in("cufar.in");
 ofstream out("cufar.out");
 
-bool sieve[100005];
+bool sieve[1000005];
 
 void genSieve()
 {
     sieve[0]=false;
     sieve[1]=false;
     sieve[2]=true;
-    for(int i=3;i<100005;i=i+2)
+    for(int i=3;i<1000005;i=i+2)
         sieve[i]=true;
-    for(int p=3;p*p<100005;p=p+2)
+    for(int p=3;p*p<1000005;p=p+2)
     {
         if (sieve[p] == true)
         {
-            for (int i=p*2; i<=100005; i += p)
+            for (int i=p*2; i<=1000005; i += p)
                 sieve[i] = false;
         }
     }
@@ -42,13 +42,13 @@ int main()
             if(nrDiv==k)
                 div = j;
         }
-        for(int j=div+2;j<100005;j=j+2)
-            if(sieve[j]==true)
+        for(int j=div+2;j<1000005;j=j+2)
+            if(sieve[j]==true && nr%j == 0)
             {
                 div=j;
                 break;
             }
-        if(k==1)
+        if(k==1 && nr%2==0)
             div=2;
         if(program==1)
             out<<div<<"\n";
